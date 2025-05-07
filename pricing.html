@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing | HealthCare Hub</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- Custom CSS -->
+  <!-- <link rel="stylesheet" href="about-us.css"> -->
+
+<style>
+  html{scroll-behavior: smooth;}
+  .hero { background: linear-gradient(to right, #007bff, #00c6ff); color: white; padding: 60px 0; text-align: center; }
+  .navbar .nav-link.active {
+    color: #ffc107 !important; 
+    font-weight: 600; 
+    border-bottom: 2px solid #ffc107; 
+    padding-bottom: 4px;
+  }
+  .navbar .nav-link:hover {
+    color: #ffc107 !important;
+  }
+
+   /* AI Chatbot */
+  .help-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #e0f7fa;
+    color: #007bff;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 1000;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .help-button:hover {
+    background-color: #b2ebf2;
+  }
+
+  /* Chat Panel */
+  .chatbot-panel {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 320px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1001;
+  }
+
+  .chatbot-header {
+    background-color: #00bcd4;
+    color: white;
+    padding: 12px 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .chatbot-body {
+    padding: 16px;
+    font-size: 0.95rem;
+    color: #444;
+    min-height: 120px;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  /* Placeholder for now */
+  .placeholder-text {
+    text-align: center;
+    color: #888;
+    margin-top: 20px;
+  }
+  .help-button,
+  .chatbot-panel,
+  .chatbot-header,
+  .chatbot-body {
+    font-family: 'Nunito', sans-serif;
+  }
+
+   
+    
+  /* About Us */
+  .about-us {
+      font-family: 'Poppins', sans-serif;
+      padding: 30px 0;
+      background-color: #e6f7ff;  /* Changed from #e8fffe */
+      text-align: center;
+  }
+
+
+  .about-us .section-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #007BFF;
+  }
+
+  .about-us p {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.8;
+      text-align: left;
+      padding: 10px 0;
+  }
+  
+  
+  .d-flex.overflow-auto {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  }
+
+  .d-flex.overflow-auto > .card {
+    scroll-snap-align: start;
+  }
+
+  /* Optional: Hide scrollbar */
+  .d-flex.overflow-auto::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* footer*/
+  footer {
+    background-color: #333;
+    color: white;
+    }
+
+    .footer-link,
+    footer p {
+    color: #cccccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: small;
+    }
+
+    .footer-link:hover,
+    footer p:hover {
+    text-decoration: underline;
+    color: #ffffff;
+    }
+
+
+    footer h5 {
+    font-weight: 600;
+    }
+</style>
+
+  
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm" style="background-color:  rgba(20, 30, 121, 0.95); font-family: 'Arial', sans-serif;">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-white fs-4" href="#">
+          HealthCare <span class="text-warning">Hub</span>
+        </a>
+        <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center gap-3">
+            <li class="nav-item">
+              <a class="nav-link fw-medium" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium" href="about-us.html">About us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium" href="consult.html">Consult</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium active" href="pricing.html">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium" href="contact-us.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-outline-light btn-sm px-3 rounded-pill" href="login.html">
+                <i class="bi bi-box-arrow-in-right"></i> Login
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-warning btn-sm px-3 rounded-pill fw-semibold" href="signup.html">
+                <i class="bi bi-person-plus"></i> Sign Up
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+  <section class="hero">
+    <div class="container" style="font-family: 'Poppins', sans-serif;">
+      <h1 class="display-5 fw-bold typing-text">Affordable Plans for Every Need</h1>
+      <p class="lead">Choose a plan that fits your healthcare journey-simple, flexible, and transparent pricing.</p>
+      <a href="#plans-section" class="btn btn-light mt-3">View Plans</a>
+    </div>
+  </section>
+
+  <!-- AI Chatbot -->
+  <!-- <button class="btn btn-primary chatbot-btn" onclick="toggleChat()">💬 AI Assistant</button>
+  <div class="chatbot" id="chatbot">
+    <div class="chatbot-header bg-primary text-white p-2">
+      <span>AI Health Assistant</span>
+        <button class="btn-close btn-close-white" onclick="toggleChat()"></button>
+    </div>
+  <div class="chatbot-messages p-3" id="chatbot-messages"></div>
+    <input type="text" class="form-control" id="chat-input" placeholder="Ask me anything about health..." onkeypress="sendMessage(event)">
+  </div> -->
+
+  <!-- Floating AI Assistant Button -->
+  <button class="help-button" onclick="toggleChatbot()" title="AI Assistant">
+    <i class="bi bi-robot"></i> AI Assistant
+  </button>
+
+  <!-- AI Assistant Chat Panel -->
+  <div id="chatbot" class="chatbot-panel">
+    <div class="chatbot-header">
+      <span>AI Health Assistant</span>
+      <button onclick="toggleChatbot()" class="close-btn"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="chatbot-body">
+      <p class="placeholder-text">👋 Hi! I’m here to help with anything health-related.</p>
+      <!-- Replace this with real AI integration if needed -->
+    </div>
+  </div>
+
+
+
+  <!-- Pricing Section - Responsive Scroll on Mobile -->
+  <section class="py-5 bg-light">
+    <div id="plans-section">
+      <div class="container" style="font-family: 'Poppins', sans-serif;">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold text-primary">Our Pricing Plans</h2>
+          <p class="text-muted">Choose the plan the fits you best.</p>
+        </div>
+
+        <!-- Desktop Grid Layout -->
+        <div class="row g-4 d-none d-md-flex">
+          <!-- Free Plan -->
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="card h-100 border-primary shadow">
+              <div class="card-body text-center">
+                <h5 class="card-title text-primary"><i class="bi bi-person"></i> Free</h5>
+                <h2 class="text-primary">₹0<span class="fs-6">/month</span></h2>
+                <ul class="list-unstyled my-3">
+                  <li>✔ Basic Consult Access</li>
+                  <li>✔ Limited AI Chat Support</li>
+                  <li>✔ Email Support</li>
+                </ul>
+                <a href="#" class="btn btn-outline-primary">Get Started</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pro Plan -->
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="card h-100 border-success shadow-lg">
+              
+              
+              <div class="badge bg-warning text-success position-absolute top-0 end-0 m-2">Most Popular</div>
+
+              <div class="card-body text-center">
+                <h5 class="card-title text-success"><i class="bi bi-star-fill"></i> Pro</h5>
+                <h2 class="text-success">₹1499<span class="fs-6">/month</span></h2>
+                <ul class="list-unstyled my-3">
+                  <li>✔ All Free Features</li>
+                  <li>✔ Priority Consult Booking</li>
+                  <li>✔ 24/7 AI & Chat Support</li>
+                </ul>
+                <a href="#" class="btn btn-success">Choose Pro</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Plus Plan -->
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="card h-100 border-danger shadow-sm">
+              <div class="card-body text-center">
+                <h5 class="card-title text-danger"><i class="bi bi-gem"></i> Plus</h5>
+                <h2 class="text-danger">₹2999<span class="fs-6">/month</span></h2>
+                <ul class="list-unstyled my-3">
+                  <li>✔ All Pro Features</li>
+                  <li>✔ Dedicated Health Assistant</li>
+                  <li>✔ Video Consultation Access</li>
+                </ul>
+                <a href="#" class="btn btn-outline-danger">Choose Plus</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <!-- Scrollable Flex on Mobile -->
+        <div class="d-flex d-md-none gap-3 overflow-auto px-1">
+          <!-- Each card wrapped with fixed min-width for scrolling -->
+          <div class="card flex-shrink-0 border-primary shadow text-center" style="min-width: 85%;">
+            <div class="card-body">
+              <h5 class="card-title text-primary"><i class="bi bi-person"></i> Free</h5>
+              <h2 class="text-primary">₹0<span class="fs-6">/month</span></h2>
+              <ul class="list-unstyled my-3">
+                <li>✔ Basic Consult Access</li>
+                <li>✔ Limited AI Chat Support</li>
+                <li>✔ Email Support</li>
+              </ul>
+              <a href="#" class="btn btn-outline-primary">Get Started</a>
+            </div>
+          </div>
+
+          <div class="card flex-shrink-0 border-success shadow-lg text-center" style="min-width: 85%;">
+            <div class="card-body">
+              <h5 class="card-title text-success"><i class="bi bi-star-fill"></i> Pro</h5>
+              <h2 class="text-success">₹1499<span class="fs-6">/month</span></h2>
+              <ul class="list-unstyled my-3">
+                <li>✔ All Free Features</li>
+                <li>✔ Priority Consult Booking</li>
+                <li>✔ 24/7 AI & Chat Support</li>
+              </ul>
+              <a href="#" class="btn btn-success">Choose Pro</a>
+            </div>
+          </div>
+
+          <div class="card flex-shrink-0 border-danger shadow-sm text-center" style="min-width: 85%;">
+            <div class="card-body">
+              <h5 class="card-title text-danger"><i class="bi bi-gem"></i> Plus</h5>
+              <h2 class="text-danger">₹2999<span class="fs-6">/month</span></h2>
+              <ul class="list-unstyled my-3">
+                <li>✔ All Pro Features</li>
+                <li>✔ Dedicated Health Assistant</li>
+                <li>✔ Video Consultation Access</li>
+              </ul>
+              <a href="#" class="btn btn-outline-danger">Choose Plus</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Tabel -->
+  <section class="py-5 bg-white" style="font-family: 'Poppins', sans-serif;">
+    <div id="pricingB" >
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="fw-bold text-dark">Compare Our Plans</h2>
+          <p class="text-muted">Find the perfect plan tailored to your needs.</p>
+        </div>
+
+        <div class="table-responsive rounded shadow-sm">
+          <table class="table table-hover table-borderless text-center align-middle">
+            <thead class="table-primary text-white" style="background-color: #0d6efd;">
+              <tr style="border-bottom: 2px solid #dee2e6;">
+                <th class="bg-primary-subtle text-dark fw-semibold">Features</th>
+                <th class="text-primary"><i class="bi bi-person"></i><br>Free</th>
+                <th class="text-success"><i class="bi bi-star-fill"></i><br>Pro</th>
+                <th class="text-danger"><i class="bi bi-gem"></i><br>Plus</th>
+              </tr>
+            </thead>
+            <tbody class="bg-light">
+              <tr>
+                <td>Basic Consult Access</td>
+                <td>✔</td>
+                <td>✔</td>
+                <td>✔</td>
+              </tr>
+              <tr class="bg-white">
+                <td>AI Chat Support</td>
+                <td><span class="text-muted">Limited</span></td>
+                <td>24/7</td>
+                <td>24/7</td>
+              </tr>
+              <tr>
+                <td>Email Support</td>
+                <td>✔</td>
+                <td>✔</td>
+                <td>✔</td>
+              </tr>
+              <tr class="bg-white">
+                <td>Priority Booking</td>
+                <td><span class="text-muted">—</span></td>
+                <td>✔</td>
+                <td>✔</td>
+              </tr>
+              <tr>
+                <td>Dedicated Health Assistant</td>
+                <td><span class="text-muted">—</span></td>
+                <td><span class="text-muted">—</span></td>
+                <td>✔</td>
+              </tr>
+              <tr class="bg-white">
+                <td>Video Consultation</td>
+                <td><span class="text-muted">—</span></td>
+                <td><span class="text-muted">—</span></td>
+                <td>✔</td>
+              </tr>
+              <tr>
+                <td class="fw-semibold text-dark">Price</td>
+                <td><strong>₹0</strong></td>
+                <td><strong>₹1499/mo</strong></td>
+                <td><strong>₹2999/mo</strong></td>
+              </tr>
+              <tr class="bg-white">
+                <td></td>
+                <td><a href="#" class="btn btn-outline-primary btn-sm">Select Free</a></td>
+                <td><a href="#" class="btn btn-success btn-sm">Choose Pro</a></td>
+                <td><a href="#" class="btn btn-danger btn-sm">Choose Plus</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  
+  
+  <!-- plans inclued-section -->
+  <section class="py-5 bg-light text-center">
+    <div class="container">
+      <h3 class="fw-bold mb-4">All Plans Include</h3>
+      <div class="row g-4">
+        <div class="col-md-4 "data-aos="zoom-in" data-aos-delay="100">
+          <i class="bi bi-shield-check fs-1 text-success"></i>
+          <h5 class="mt-2">Secure Platform</h5>
+          <p class="text-muted">All your health data is encrypted and protected.</p>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+          <i class="bi bi-clock-history fs-1 text-primary"></i>
+          <h5 class="mt-2">24/7 Support</h5>
+          <p class="text-muted">We’re here whenever you need us.</p>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="500">
+          <i class="bi bi-phone fs-1 text-danger"></i>
+          <h5 class="mt-2">Mobile Friendly</h5>
+          <p class="text-muted">Access consultations and records on the go.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+    
+    <!-- consultCTA  -->
+  <section class="position-relative text-white py-5 " style="background-image: url('services.jpg'); background-size: cover; background-position: center;">
+    <div class="overlay" style="position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(20, 30, 121, 0.7); z-index: 1;"></div>
+    <div class="container position-relative z-2 text-center">
+      <h2 class="display-5 fw-bold">Need Immediate Help?</h2>
+      <p class="lead">Our doctors are ready to consult with you online. Fast, reliable, and secure.</p>
+      <a href="consult.html" class="btn btn-warning mt-3 px-4 py-2 fw-semibold">Consult a Doctor Now</a>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-5 bg-light">
+    <div class="container" style="font-family: 'Poppins', sans-serif;">
+      <div class="text-center mb-4">
+        <h3 class="fw-bold">What Our Users Say</h3>
+      </div>
+
+      <!-- Scrollable on small screens -->
+      <div class="d-md-none overflow-auto" style="-webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none;">
+        <div class="d-flex flex-nowrap gap-3" style="min-width: 100%;">
+          <!-- Card 1 -->
+          <div class="card shadow-sm p-3" style="min-width: 260px; max-width: 260px; flex: 0 0 auto;">
+            <p>“The Pro plan is a life-saver. I get immediate responses from doctors and support!”</p>
+            <div class="d-flex align-items-center mt-3">
+              <!-- <img src="https://i.pravatar.cc/40?img=" class="rounded-circle me-3" alt=""> -->
+              <div>
+                <strong>Ravi</strong><br><small>Banglore, India</small>
+              </div>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="card shadow-sm p-3" style="min-width: 260px; max-width: 260px; flex: 0 0 auto;">
+            <p>“With the Plus plan, I have my own health assistant. Totally worth it!”</p>
+            <div class="d-flex align-items-center mt-3">
+              <!-- <img src="https://i.pravatar.cc/40?img=11" class="rounded-circle me-3" alt=""> -->
+              <div>
+                <strong>Sharma</strong><br><small>Andhra Pradesh, India</small>
+              </div>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="card shadow-sm p-3" style="min-width: 260px; max-width: 260px; flex: 0 0 auto;">
+            <p>“I started with the Free plan and upgraded soon after. Great service!”</p>
+            <div class="d-flex align-items-center mt-3">
+              <!-- <img src="https://i.pravatar.cc/40?img=12" class="rounded-circle me-3" alt=""> -->
+              <div>
+                <strong>Amit Raj</strong><br><small>Bangalore, India</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid layout for md and up -->
+      <div class="d-none d-md-block">
+        <div class="row g-4">
+          <!-- Same cards reused in grid -->
+          <div class="col-md-4" data-aos="fade-in" data-aos-delay="100">
+            <div class="card shadow-sm p-3 h-100">
+              <p>“The Pro plan is a life-saver. I get immediate responses from doctors and support!”</p>
+              <div class="d-flex align-items-center mt-3">
+                <!-- <img src="https://i.pravatar.cc/40?img=" class="rounded-circle me-3" alt=""> -->
+                <div>
+                  <strong>Ravi</strong><br><small>Banglore, India</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-in" data-aos-delay="300">
+            <div class="card shadow-sm p-3 h-100">
+              <p>“With the Plus plan, I have my own health assistant. Totally worth it!”</p>
+              <div class="d-flex align-items-center mt-3">
+                <!-- <img src="https://i.pravatar.cc/40?img=11" class="rounded-circle me-3" alt=""> -->
+                <div>
+                  <strong>Sharma</strong><br><small>Andhra Pradesh, India</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-in" data-aos-delay="500">
+            <div class="card shadow-sm p-3 h-100">
+              <p>“I started with the Free plan and upgraded soon after. Great service!”</p>
+              <div class="d-flex align-items-center mt-3">
+                <!-- <img src="https://i.pravatar.cc/40?img=12" class="rounded-circle me-3" alt=""> -->
+                <div>
+                  <strong>Amit Raj</strong><br><small>Bangalore, India</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FAQ section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="fw-bold  text-center" >Frequently Asked Questions</h2>
+        <p class="text-muted text-center mb-4">Find answers to the most common pricing queries.</p>
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false">
+                  <i class="bi bi-question-circle me-2"></i> Can I cancel anytime?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                <div class="accordion-body bg-light text-muted">
+                  <p> Yes, you can cancel or change your plan at any time from your dashboard.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  <i class="bi bi-question-circle me-2"></i>Is AI support included in all plans?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse">
+                <div class="accordion-body bg-light text-muted">
+                  AI chat is available in all plans, but 24/7 access is exclusive to Pro and Plus.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  <i class="bi bi-question-circle me-2"></i>What payment methods do you accept?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse">
+                <div class="accordion-body bg-light text-muted">
+                  We accept all major credit/debit cards, UPI, and net banking.
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+  </section>
+
+   <!-- Footer -->
+   <footer class="footer bg-dark text-white py-5">
+    <div class="container">
+      <div class="row text-center text-md-start gy-4">
+  
+        <!-- Column 1 -->
+        <div class="col-12 col-md-4">
+          <h5 class="fw-bold mb-3">HealthCare Hub</h5>
+          <p style="color: #cccccc;">Empowering healthcare with AI-powered tools and verified doctors for every individual.</p>
+        </div>
+  
+        <!-- Column 2 -->
+        <div class="col-6 col-md-4">
+          <h5 class="fw-bold mb-3">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about-us.html" class="footer-link">About Us</a></li>
+            <li><a href="consult.html" class="footer-link">Consult</a></li>
+            <li><a href="pricing.html" class="footer-link">Pricing</a></li>
+            <li><a href="contact-us.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+  
+        <!-- Column 3 -->
+        <div class="col-6 col-md-4">
+          <h5 class="fw-bold mb-3">Contact</h5>
+          <p class="mb-1">📧 support@healthcarehub.com</p>
+          <p class="mb-1">📞 +91-98765-43210</p>
+          <p class="mb-0">📍 Bengaluru, India</p>
+        </div>
+      </div>
+  
+      <!-- Bottom Text (this must be inside .container) -->
+      <div class="text-center pt-4 mt-4 border-top border-secondary small ">
+        © 2025 HealthCare Hub. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script>
+    function toggleChatbot() {
+      const panel = document.getElementById('chatbot');
+      panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+    }
+  </script>
+  
+
+  
+  
+</body>
+</html>

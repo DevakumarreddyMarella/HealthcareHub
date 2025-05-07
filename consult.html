@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consult | HealthCare Hub</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+ 
+ <style>
+    body { font-family: 'Poppins', sans-serif; background-color: #f5f9fc }
+    html{scroll-behavior: smooth;}
+    .navbar .nav-link.active {
+      color: #ffc107 !important; 
+      font-weight: 600; 
+      border-bottom: 2px solid #ffc107; 
+      padding-bottom: 4px;
+    }
+    .navbar .nav-link:hover {
+      color: #ffc107 !important;
+   }
+    .hero { background: linear-gradient(to right, #007bff, #00c6ff); color: white; padding: 60px 0; text-align: center; }
+    .consult-card { transition: 0.3s ease-in-out; }
+    .consult-card:hover { transform: translateY(-5px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
+    .section-title { font-weight: 600; margin-bottom: 30px; }
+    .doctor { background: #ffffff; }
+
+    /* How it works */
+    .step-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      line-height: 50px;
+      text-align: center;
+      font-size: 1.2rem;
+      z-index: 1;
+    }
+  
+    .step-line {
+      height: 4px;
+      background-color: #ccc;
+      flex: 1;
+      margin: 0 10px;
+      position: relative;
+      top: -2px;
+      z-index: 0;
+    }
+    .line-between {
+    flex-grow: 1;
+    height: 4px;
+    background-color: #ccc;
+  }
+
+  .line-between-vertical {
+    width: 4px;
+    height: 30px;
+    background-color: #ccc;
+  }
+   /* AI Chatbot */
+  .help-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #e0f7fa;
+    color: #007bff;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 1000;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .help-button:hover {
+    background-color: #b2ebf2;
+  }
+
+  /* Chat Panel */
+  .chatbot-panel {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 320px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1001;
+  }
+
+  .chatbot-header {
+    background-color: #00bcd4;
+    color: white;
+    padding: 12px 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .chatbot-body {
+    padding: 16px;
+    font-size: 0.95rem;
+    color: #444;
+    min-height: 120px;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .placeholder-text {
+    text-align: center;
+    color: #888;
+    margin-top: 20px;
+  }
+  .help-button,
+  .chatbot-panel,
+  .chatbot-header,
+  .chatbot-body {
+    font-family: 'Nunito', sans-serif;
+  }
+
+
+  /* footer */
+  footer {
+      background-color: #333;
+      color: white;
+    }
+
+    .footer-link,
+    footer p {
+      color: #cccccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: small;
+    }
+
+    .footer-link:hover,
+    footer p:hover {
+      text-decoration: underline;
+      color: #ffffff;
+    }
+    footer h5 {
+      font-weight: 600;
+    }
+  
+</style>
+
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm" style="background-color:  rgba(20, 30, 121, 0.95); font-family: 'Arial', sans-serif;">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-white fs-4" href="#">
+          HealthCare <span class="text-warning">Hub</span>
+        </a>
+        <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center gap-3">
+            <li class="nav-item">
+              <a class="nav-link fw-medium" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium" href="about-us.html">About us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium active" href="consult.html">Consult</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium" href="pricing.html">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium" href="contact-us.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-outline-light btn-sm px-3 rounded-pill" href="login.html">
+                <i class="bi bi-box-arrow-in-right"></i> Login
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-warning btn-sm px-3 rounded-pill fw-semibold" href="signup.html">
+                <i class="bi bi-person-plus"></i> Sign Up
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" tyle="font-family: 'Poppins', sans-serif;">
+    <div class="container">
+      <h1 class="display-5 fw-bold">Consult a Doctor</h1>
+      <p class="lead">Get expert advice from certified specialists online or in-person. Quick, secure and convenient.</p>
+      <a href="#doctor-section" class="btn btn-light mt-3">Start Consultation</a>
+    </div>
+  </section>
+
+<!-- Floating AI Assistant Button -->
+<button class="help-button" onclick="toggleChatbot()" title="AI Assistant">
+  <i class="bi bi-robot"></i> AI Assistant
+</button>
+
+<!-- AI Assistant Chat Panel -->
+<div id="chatbot" class="chatbot-panel">
+  <div class="chatbot-header">
+    <span>AI Health Assistant</span>
+    <button onclick="toggleChatbot()" class="close-btn"><i class="bi bi-x-lg"></i></button>
+  </div>
+  <div class="chatbot-body">
+    <p class="placeholder-text">👋 Hi! I’m here to help with anything health-related.</p>
+    <!-- Replace this with real AI integration if needed -->
+  </div>
+</div>
+
+  <!-- Consultation Types -->
+  <section class="py-5">
+    <div class="container" style="font-family: 'Poppins', sans-serif;">
+      <h2 class="text-center section-title" >Choose Your Mode of Consultation</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card consult-card text-center p-4">
+            <div class="card-body">
+              <h5 class="card-title">Online Consultation</h5>
+              <p class="card-text">Video or chat-based consultation from the comfort of your home.</p>
+              <a href="#doctor-section" class="btn btn-outline-primary">Consult Online</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card consult-card text-center p-4">
+            <div class="card-body">
+              <h5 class="card-title">In-Person Visit</h5>
+              <p class="card-text">Book an appointment and visit the doctor at their clinic.</p>
+              <a href="#doctor-section" class="btn btn-outline-primary">Find Clinic</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card consult-card text-center p-4">
+            <div class="card-body">
+              <h5 class="card-title">Specialist Consult</h5>
+              <p class="card-text">Choose from a wide range of medical specialties.</p>
+              <a href="#doctor-section" class="btn btn-outline-primary">View Specialists</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- impact section  -->
+     
+  <section class="py-5" style="background-color: #000;">
+    <div class="container">
+      <div class="row text-center text-white gy-4">
+        
+        <!-- Happy Users -->
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+          <div class="mb-2">
+            <i class="bi bi-emoji-smile text-primary display-6"></i>
+          </div>
+          <h2 class="fw-bold">2,000+</h2>
+          <p class="mb-0">Happy Users</p>
+        </div>
+        
+        <!-- Verified Doctors -->
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
+          <div class="mb-2">
+            <i class="bi bi-person-badge text-success display-6"></i>
+          </div>
+          <h2 class="fw-bold">200+</h2>
+          <p class="mb-0">Verified Doctors</p>
+        </div>
+        
+        <!-- Specialities -->
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
+          <div class="mb-2">
+            <i class="bi bi-clipboard2-pulse text-info display-6"></i>
+          </div>
+          <h2 class="fw-bold">25+</h2>
+          <p class="mb-0">Specialities</p>
+        </div>
+        
+        <!-- App Rating -->
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="400">
+          <div class="mb-2">
+            <i class="bi bi-star-fill text-warning display-6"></i>
+          </div>
+          <h2 class="fw-bold">4.5 / 5</h2>
+          <p class="mb-0">App Rating</p>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+  
+
+  <!-- Doctor List Placeholder --> 
+  <section class="py-5">
+    <div class="container" id="doctor-section">
+      <h2 class="text-center section-title">Available Doctors</h2>
+      <h2 class="mb-4">Available Dentists for Consultation</h2>
+  
+      <!-- Doctor Card 1 -->
+      <div class="row border-bottom py-4">
+        <div class="col-md-2 text-center">
+          <img src="doctor1.jpg" alt="Dr. Suman" class="rounded-circle mb-2" width="100" height="100">
+          <img src="practo-badge.png" alt="Badge" width="80">
+        </div>
+        <div class="col-md-7">
+          <h5 class="text-primary fw-semibold mb-1">Dr. Suman</h5>
+          <p class="mb-1">Dentist</p>
+          <p class="mb-1 text-muted">26 years experience overall</p>
+          <p class="mb-1"><strong>Koramangala, Bangalore</strong> &middot; Chisel Dental</p>
+          <p class="mb-1 text-muted">₹300 Consultation fee at clinic</p>
+          <div class="d-flex align-items-center gap-3 mt-2">
+            <span class="badge bg-success">👍 97%</span>
+            <a href="#" class="text-decoration-underline">4633 Patient Stories</a>
+          </div>
+        </div>
+        <div class="col-md-3 text-center">
+          <p class="text-success fw-semibold mb-2">📅 Available Today</p>
+          <a href="#" class="btn btn-primary btn-sm mb-2 w-100">Book Clinic Visit <br><small>No Booking Fee</small></a>
+          <a href="#" class="btn btn-outline-primary btn-sm w-100">📞 Contact Clinic</a>
+        </div>
+      </div>
+  
+      <!-- Doctor Card 2 -->
+      <div class="row border-bottom py-4">
+        <div class="col-md-2 text-center">
+          <img src="doctor2.jpg" alt="Dr. Venkat" class="rounded-circle mb-2" width="100" height="100">
+          <img src="practo-badge.png" alt="Badge" width="80">
+        </div>
+        <div class="col-md-7">
+          <h5 class="text-primary fw-semibold mb-1">Dr. Venkat</h5>
+          <p class="mb-1">Dentist</p>
+          <p class="mb-1 text-muted">30 years experience overall</p>
+          <p class="mb-1"><strong>Indiranagar, Bangalore</strong> &middot; All Care Dental Centre - since 1969</p>
+          <p class="mb-1 text-muted">₹300 Consultation fee at clinic</p>
+          <div class="d-flex align-items-center gap-3 mt-2">
+            <span class="badge bg-success">👍 90%</span>
+            <a href="#" class="text-decoration-underline">50 Patient Stories</a>
+          </div>
+        </div>
+        <div class="col-md-3 text-center">
+          <p class="text-success fw-semibold mb-2">📅 Available Today</p>
+          <a href="#" class="btn btn-primary btn-sm mb-2 w-100">Book Clinic Visit <br><small>No Booking Fee</small></a>
+          <a href="#" class="btn btn-outline-primary btn-sm w-100">📞 Contact Clinic</a>
+        </div>
+      </div>
+      <!-- Repeat similar cards for more doctors -->
+    </div>
+  </section>
+  
+  <!-- How it works  -->
+  
+  <section class="py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-5" data-aos="fade-up">From Start to Care</h2>
+  
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4">
+        <!-- Step 1 -->
+        <div class="d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
+          <div class="step-circle  text-white fw-bold">
+            <i class="bi bi-person-check display-5 text-primary"></i></div>
+          <p class="mt-2 mb-0 fw-semibold">Choose a Doctor</p>
+        </div>
+  
+        <!-- Line (vertical for small screens, horizontal for md+) -->
+        <div class="line-between d-none d-md-block"></div>
+        <div class="line-between-vertical d-block d-md-none"></div>
+  
+        <!-- Step 2 -->
+        <div class="d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="300">
+          <div class="step-circle text-white fw-bold">
+            <i class="bi bi-calendar-check display-5 text-success"></i></div>
+          <p class="mt-2 mb-0 fw-semibold">Book a Slot</p>
+        </div>
+  
+        <!-- Line (same logic) -->
+        <div class="line-between d-none d-md-block"></div>
+        <div class="line-between-vertical d-block d-md-none"></div>
+  
+        <!-- Step 3 -->
+        <div class="d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="500">
+          <div class="step-circle  text-white fw-bold">
+            <i class="bi bi-chat-dots display-5 text-info"></i></div>
+          <p class="mt-2 mb-0 fw-semibold">Get Consulted</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- consult CTA -->
+  <section class="py-5 text-white" style="background-color: #000;">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-3">Still delaying your health concerns?</h2>
+      <p class="lead mb-4 text-secondary">Book Appointment Instatly.</p>
+      <a href="consult.html" class="btn btn-outline-warning btn-lg px-4 fw-semibold">
+        Consult Now
+      </a>
+    </div>
+  </section>
+  
+  
+  <!-- FAQ's  -->
+  <section class="py-5 mb-5">
+    <div class="container">
+        <h2 class="fw-bold mb-4 text-center" >Frequently Asked Questions</h2>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false">
+                        <i class="bi bi-question-circle me-2"></i> Is online consultation safe and private?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body bg-light text-muted">
+                        <p>Yes, all online consultations are end-to-end encrypted and secure.</p>
+                        <a href="find-doctors.html"><button class="btn btn-sm btn-primary mt-2">Book Appointment</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faqTwo">
+                  <button class="accordion-button collapsed d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                    <i class="bi bi-question-circle me-2"></i> Can I get a prescription from an online consultation?
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body bg-lght text-muted">
+                    Yes, doctors can provide digital prescriptions after the consultation.
+                  </div>
+                </div>
+            </div>
+           <!-- Add more FAQs as needed --> 
+        </div>
+    </div>
+  </section>
+
+   <!-- Footer -->
+  <footer class="footer bg-dark text-white py-5">
+    <div class="container">
+      <div class="row text-center text-md-start gy-4">
+  
+        <!-- Column 1 -->
+        <div class="col-12 col-md-4">
+          <h5 class="fw-bold mb-3">HealthCare Hub</h5>
+          <p style="color: #cccccc;">Empowering healthcare with AI-powered tools and verified doctors for every individual.</p>
+        </div>
+  
+        <!-- Column 2 -->
+        <div class="col-6 col-md-4">
+          <h5 class="fw-bold mb-3">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about-us.html" class="footer-link">About Us</a></li>
+            <li><a href="consult.html" class="footer-link">Consult</a></li>
+            <li><a href="pricing.html" class="footer-link">Pricing</a></li>
+            <li><a href="contact-us.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+  
+        <!-- Column 3 -->
+        <div class="col-6 col-md-4">
+          <h5 class="fw-bold mb-3">Contact</h5>
+          <p class="mb-1">📧 support@healthcarehub.com</p>
+          <p class="mb-1">📞 +91-98765-43210</p>
+          <p class="mb-0">📍 Bengaluru, India</p>
+        </div>
+      </div>
+  
+      <!-- Bottom Text (this must be inside .container) -->
+      <div class="text-center pt-4 mt-4 border-top border-secondary small ">
+        © 2025 HealthCare Hub. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+<script>
+  function toggleChatbot() {
+    const panel = document.getElementById('chatbot');
+    panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+  }
+</script>
+</body>
+</html>

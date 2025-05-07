@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | HealthCare Hub</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #6bb6ff;
+      --accent: #b3e5fc;
+      --bg: #f9fbfd;
+      --text: #444;
+      --heading: #2b4f70;
+    }
+    nav{ 
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .navbar .nav-link.active {
+    color: #ffc107 !important; 
+    font-weight: 600; 
+    border-bottom: 2px solid #ffc107; 
+    padding-bottom: 4px;
+  }
+  .navbar .nav-link:hover {
+    color: #ffc107 !important;
+  }
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .hero-about {
+    font-family: 'Poppins', sans-serif;
+    background-image: url('banner-health.jpg'); /* Optional image */
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    background: linear-gradient(to right, #007bff, #00c6ff); 
+    color: white; 
+    padding: 60px 0; 
+    text-align: center;
+    /* line-height: 1.; */
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(180deg, #e0f7fa, #ffffff);
+      padding: 80px 20px 60px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      color: var(--heading);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #5c7080;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero img {
+      max-width: 500px;
+      width: 90%;
+      margin-top: 30px;
+    }
+
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      color: var(--heading);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .section p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #666;
+    }
+
+    .mission-section {
+      background: linear-gradient(180deg, #e6f7fa 0%, #f9fbfd 100%);
+      padding: 100px 20px;
+      position: relative;
+    }
+
+    .mission-section h2 {
+      font-size: 2.4rem;
+      color: var(--heading);
+      margin-bottom: 2rem;
+      font-weight: 800;
+    }
+
+    .mission-text {
+      max-width: 750px;
+      margin: 0 auto;
+      font-size: 1.25rem;
+      color: #4a4a4a;
+      line-height: 1.9;
+      font-weight: 500;
+      font-style: italic;
+      padding: 0 10px;
+    }
+    .impact-stats {
+     scroll-snap-type: x mandatory;
+     -webkit-overflow-scrolling: touch;
+    }
+    .impact-stats > div {
+      scroll-snap-align: center;
+      background-color: #111; /* optional for contrast */
+      border-radius: 12px;
+      padding: 20px 10px;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature {
+      background: white;
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .feature i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+    }
+
+    .feature h5 {
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 0.5rem;
+    }
+    .blog-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Scrollable carousel for small screens */
+   @media (max-width: 768px) {
+    .blog-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 1.2rem;
+      padding-bottom: 1rem;
+      scroll-snap-type: x mandatory;
+    }
+  .blog-card {
+      flex: 0 0 85%;
+      scroll-snap-align: center;
+    }
+  }
+
+   /* Blog card styles (reuse previous styles) */
+  .blog-card {
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+      min-width: 260px;
+  }
+  .blog-card:hover {
+      transform: translateY(-6px);
+  }
+
+  .blog-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .blog-card .content {
+    padding: 1.5rem;
+    text-align: left;
+  }
+
+  .blog-card h5 {
+    font-size: 1.1rem;
+    color: var(--heading);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .blog-card p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .blog-card a {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  /* AI Chatbot */
+  .help-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #e0f7fa;
+    color: #007bff;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 1000;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .help-button:hover {
+    background-color: #b2ebf2;
+  }
+
+  /* Chat Panel */
+  .chatbot-panel {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 320px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1001;
+  }
+
+  .chatbot-header {
+    background-color: #00bcd4;
+    color: white;
+    padding: 12px 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .chatbot-body {
+    padding: 16px;
+    font-size: 0.95rem;
+    color: #444;
+    min-height: 120px;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+    /* cta  */
+    .cta {
+      background: linear-gradient(to right, #b2ebf2, #e1f5fe);
+      padding: 60px 20px;
+      border-radius: 30px;
+      margin: 60px auto 60px;
+      max-width: 900px;
+      text-align: center;
+    }
+
+    .cta h3 {
+      font-size: 1.8rem;
+      color: #00796b;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: #4fc3f7;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s;
+    }
+
+    .cta a:hover {
+      background: #039be5;
+    }
+    .confetti-piece {
+      position: absolute;
+      top: -10px;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0% {
+      transform: translateY(0) rotate(0deg);
+      }
+      100% {
+      transform: translateY(110vh) rotate(360deg);
+      }
+    }
+    .partner-logo {
+      max-height: 50px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: grayscale(100%);
+    }
+
+    .partner-logo:hover {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+    }
+
+    .trusted-carousel {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    }
+
+    .trusted-carousel img {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    max-height: 50px;
+    }
+
+
+    
+    footer {
+      background-color: #333;
+      color: white;
+    }
+
+    .footer-link,
+    footer p {
+      color: #cccccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: small;
+    }
+
+    .footer-link:hover,
+    footer p:hover {
+      text-decoration: underline;
+      color: #ffffff;
+    }
+    footer h5 {
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      .section h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+    <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm"  style="background-color: rgba(20, 30, 121, 0.95); font-family: 'Arial', sans-serif;">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-white fs-4" href="#">
+        HealthCare <span class="text-warning">Hub</span>
+      </a>
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center gap-3">
+          <li class="nav-item">
+            <a class="nav-link fw-medium" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-medium active" href="about-us.html">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-medium" href="consult.html">Consult</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-medium" href="pricing.html">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-medium" href="contact-us.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-light btn-sm px-3 rounded-pill" href="login.html">
+              <i class="bi bi-box-arrow-in-right"></i> Login
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-warning btn-sm px-3 rounded-pill fw-semibold" href="signup.html">
+              <i class="bi bi-person-plus"></i> Sign Up
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+   <!-- banner  -->
+   <section class="hero-about ">
+    <div class="container">
+      <h1 class="display-5 fw-bold">About HealthCare Hub</h1>
+      <p class="lead">Empowering your health with AI-powered solutions and trusted care.</p>
+      <a href="#blogs" class="btn btn-light mt-3">View Blogs</a>
+
+    </div>
+  </section>
+  <!-- Hero -->
+  <section class="hero" data-aos="fade-down">
+    <h1>Welcome to HealthCare Hub</h1>
+    <p>Your wellness companion — combining trusted care with modern technology to help you feel your best.</p>
+    <img src="soft-health.png" alt="Health Illustration">
+  </section>
+
+  <!-- Mission -->
+  <section class="section mission-section" data-aos="fade-up">
+    <div class="container">
+      <h2>Our Mission</h2>
+      <p class="mission-text">
+        “We believe in simplifying healthcare by offering a safe, gentle, and intelligent space — where expert doctors, AI insights, and emotional wellness come together to support your health journey.”
+      </p>
+    </div>
+  </section>
+  
+
+
+  <!-- Impact Section -->
+  <section class="py-5" data-aos="fade-up" style="background-color: #000;">
+    <div class="container">
+      <h2 class="fw-bold mb-4 text-center text-white" data-aos="fade-up">Our Impact So Far</h2>
+  
+      <!-- Scrollable container for mobile -->
+      <div class="impact-stats d-flex d-md-none gap-4 px-2 overflow-auto">
+        <!-- Each stat -->
+        <div class="text-white text-center flex-shrink-0" style="width: 75%;">
+          <i class="bi bi-emoji-smile text-primary display-6 mb-2"></i>
+          <h2 class="fw-bold">2,000+</h2>
+          <p>Happy Users</p>
+        </div>
+        <div class="text-white text-center flex-shrink-0" style="width: 75%;">
+          <i class="bi bi-person-badge text-success display-6 mb-2"></i>
+          <h2 class="fw-bold">200+</h2>
+          <p>Verified Doctors</p>
+        </div>
+        <div class="text-white text-center flex-shrink-0" style="width: 75%;">
+          <i class="bi bi-clipboard2-pulse text-info display-6 mb-2"></i>
+          <h2 class="fw-bold">25+</h2>
+          <p>Specialities</p>
+        </div>
+        <div class="text-white text-center flex-shrink-0" style="width: 75%;">
+          <i class="bi bi-star-fill text-warning display-6 mb-2"></i>
+          <h2 class="fw-bold">4.5 / 5</h2>
+          <p>App Rating</p>
+        </div>
+      </div>
+  
+      <!-- Desktop Grid -->
+      <div class="row d-none d-md-flex text-center text-white gy-4 mt-4">
+        <div class="col-md-3">
+          <i class="bi bi-emoji-smile text-primary display-6 mb-2"></i>
+          <h2 class="fw-bold">2,000+</h2>
+          <p class="mb-0">Happy Users</p>
+        </div>
+        <div class="col-md-3">
+          <i class="bi bi-person-badge text-success display-6 mb-2"></i>
+          <h2 class="fw-bold">200+</h2>
+          <p class="mb-0">Verified Doctors</p>
+        </div>
+        <div class="col-md-3">
+          <i class="bi bi-clipboard2-pulse text-info display-6 mb-2"></i>
+          <h2 class="fw-bold">25+</h2>
+          <p class="mb-0">Specialities</p>
+        </div>
+        <div class="col-md-3">
+          <i class="bi bi-star-fill text-warning display-6 mb-2"></i>
+          <h2 class="fw-bold">4.5 / 5</h2>
+          <p class="mb-0">App Rating</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Features -->
+  <section class="section" style="background: #f1f9fb;" data-aos="fade-up">
+    <h2>What We Offer</h2>
+    <div class="features">
+      <div class="feature" data-aos="fade-up" data-aos-delay="100">
+        <i class="bi bi-person-heart"></i>
+        <h5>Doctor Consultations</h5>
+        <p>Speak with certified professionals who care about your physical and emotional well-being.</p>
+      </div>
+      <div class="feature" data-aos="fade-up" data-aos-delay="200">
+        <i class="bi bi-robot"></i>
+        <h5>AI Health Insights</h5>
+        <p>Receive personalized recommendations to support your health goals and reduce stress.</p>
+      </div>
+      <div class="feature" data-aos="fade-up" data-aos-delay="300">
+        <i class="bi bi-calendar-heart"></i>
+        <h5>Easy Appointments</h5>
+        <p>Book appointments without hassle, with reminders that help you stay on track.</p>
+      </div>
+    </div>
+  </section>
+
+    <!-- Core Values Section -->
+  <section class="py-5 bg-white text-center" style="font-family: 'Poppins', sans-serif;">
+    <div class="container">
+      <h2 class="fw-bold mb-4" data-aos="fade-up">Our Core Values</h2>
+      <p class="text-muted mb-5" style="max-width: 700px; margin: 0 auto;" data-aos="fade-up" data-aos-delay="100">
+        We are driven by principles that shape every interaction, every innovation, and every experience we offer.
+      </p>
+  
+      <div class="row g-4">
+        <!-- Value 1 -->
+        <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200">
+          <div class="p-4 shadow-sm rounded-4 h-100 bg-light">
+            <i class="bi bi-heart-pulse-fill fs-1 text-danger mb-3"></i>
+            <h5 class="fw-semibold">Compassion</h5>
+            <p class="small text-muted">We care deeply and treat every user with empathy and understanding.</p>
+          </div>
+        </div>
+  
+        <!-- Value 2 -->
+        <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="300">
+          <div class="p-4 shadow-sm rounded-4 h-100 bg-light">
+            <i class="bi bi-shield-check fs-1 text-success mb-3"></i>
+            <h5 class="fw-semibold">Trust</h5>
+            <p class="small text-muted">We earn confidence by being secure, reliable, and transparent.</p>
+          </div>
+        </div>
+  
+        <!-- Value 3 -->
+        <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="400">
+          <div class="p-4 shadow-sm rounded-4 h-100 bg-light">
+            <i class="bi bi-lightbulb fs-1 text-warning mb-3"></i>
+            <h5 class="fw-semibold">Innovation</h5>
+            <p class="small text-muted">We blend AI with care to create smart, accessible health solutions.</p>
+          </div>
+        </div>
+  
+        <!-- Value 4 -->
+        <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="500">
+          <div class="p-4 shadow-sm rounded-4 h-100 bg-light">
+            <i class="bi bi-people fs-1 text-primary mb-3"></i>
+            <h5 class="fw-semibold">Inclusivity</h5>
+            <p class="small text-muted">We believe in healthcare that reaches everyone — no matter where.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Blog Section -->
+  <section class="section bg-white" data-aos="fade-up" id="blogs">
+    <h2 style="color: var(--heading);">Latest Wellness Tips</h2>
+    <p style="color: #666; max-width: 700px; margin: 0 auto 3rem;">
+      Explore articles from our health experts to stay informed, mindful, and well.
+    </p>
+  
+    <!-- Responsive container -->
+    <div class="blog-container">
+      <!-- Blog Card 1 -->
+      <div class="blog-card">
+        <img src="HealthyFood.jpg" alt="Healthy Food">
+        <div class="content">
+          <h5>Top 5 Foods for a Healthy Heart</h5>
+          <p>Simple, everyday meals that support cardiovascular health and reduce inflammation.</p>
+          <a href="#">Read More →</a>
+        </div>
+      </div>
+  
+      <!-- Blog Card 2 -->
+      <div class="blog-card">
+        <img src="Exercise.jpg" alt="Exercise">
+        <div class="content">
+          <h5>The Power of Daily Movement</h5>
+          <p>How 20 minutes a day can improve mental clarity, sleep, and mood.</p>
+          <a href="#">Read More →</a>
+        </div>
+      </div>
+  
+      <!-- Blog Card 3 -->
+      <div class="blog-card">
+        <img src="mental_heatlh.jpg" alt="Stress Relief">
+        <div class="content">
+          <h5>Breathwork & Stress Relief</h5>
+          <p>Gentle breathing techniques to ease anxiety and reconnect with calm.</p>
+          <a href="#">Read More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+   <!-- Floating AI Assistant Button -->
+   <button class="help-button" onclick="toggleChatbot()" title="AI Assistant">
+    <i class="bi bi-robot"></i> AI Assistant
+  </button>
+
+  <!-- AI Assistant Chat Panel -->
+  <div id="chatbot" class="chatbot-panel">
+    <div class="chatbot-header">
+      <span>AI Health Assistant</span>
+      <button onclick="toggleChatbot()" class="close-btn"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="chatbot-body">
+      <p class="placeholder-text">👋 Hi! I’m here to help with anything health-related.</p>
+      <!-- Replace this with real AI integration if needed -->
+    </div>
+  </div>
+  
+      <!-- Special Launch Offer Section with Confetti -->
+  <section class="py-5 text-center text-white position-relative overflow-hidden" data-aos="fade-up" style="background: linear-gradient(135deg, #0d6efd, #6610f2); min-height: 400px;">
+   
+    <!-- Confetti Background -->
+    <div class="confetti position-absolute top-0 start-0 w-100 h-100" style="pointer-events: none; z-index: 1;"></div>
+
+    <div class="container position-relative z-2" data-aos="fade-up" data-aos-duration="1200">
+      <h1 class="fw-bold mb-3 display-5">🎉 Special Launch Offer! 🎉</h1>
+      <p class="lead mb-4">Sign up for the <strong>Pro Plan</strong> today and enjoy <span class="text-warning fw-bold">1 Month Free</span> upgrade to our Plus Plan!</p>
+      <a href="#" class="btn btn-warning btn-lg px-5 py-2 rounded-pill fw-semibold shadow" style="transition: all 0.3s ease;">
+        Claim Offer Now
+      </a>
+    </div>
+
+ </section>
+ 
+  <!-- CTA -->
+  <section class="cta" data-aos="zoom-in">
+    <h3>Join the Wellness Revolution</h3>
+    <p>Sign up for free and experience calm, confidence, and care — all in one app.</p>
+    <a href="signup.html">Get Started</a>
+  </section>
+
+ 
+  <!-- Footer -->
+  <footer class="footer bg-dark text-white py-5">
+    <div class="container">
+      <div class="row text-center text-md-start gy-4">
+  
+        <!-- Column 1 -->
+        <div class="col-12 col-md-4">
+          <h5 class="fw-bold mb-3">HealthCare Hub</h5>
+          <p style="color: #cccccc;">Empowering healthcare with AI-powered tools and verified doctors for every individual.</p>
+        </div>
+  
+        <!-- Column 2 -->
+        <div class="col-6 col-md-4">
+          <h5 class="fw-bold mb-3">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about-us.html" class="footer-link">About Us</a></li>
+            <li><a href="consult.html" class="footer-link">Consult</a></li>
+            <li><a href="pricing.html" class="footer-link">Pricing</a></li>
+            <li><a href="contact-us.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+  
+        <!-- Column 3 -->
+        <div class="col-6 col-md-4">
+          <h5 class="fw-bold mb-3">Contact</h5>
+          <p class="mb-1">📧 support@healthcarehub.com</p>
+          <p class="mb-1">📞 +91-98765-43210</p>
+          <p class="mb-0">📍 Bengaluru, India</p>
+        </div>
+      </div>
+  
+      <!-- Bottom Text (this must be inside .container) -->
+      <div class="text-center pt-4 mt-4 border-top border-secondary small ">
+        © 2025 HealthCare Hub. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+  
+  
+
+  <!-- AOS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  <script>
+    function toggleChatbot() {
+      const panel = document.getElementById('chatbot');
+      panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+    }
+  </script>
+  <script>
+    const confettiContainer = document.querySelector('.confetti');
+  
+    for (let i = 0; i < 100; i++) {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti-piece');
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      confetti.style.opacity = Math.random();
+      confetti.style.fontSize = Math.random() * 10 + 8 + 'px';
+      confetti.innerHTML = '🎊';
+      confettiContainer.appendChild(confetti);
+    }
+  </script>
+  
+</body>
+</html>
